@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+        </div>
+
+        <div class="btns">
+            <div class="row">
+              
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+               
+                <button id="eval" onclick="screen.value=eval(screen.value)">ans</button>
+                <button id="ce" onclick="backspc()">del</button>
+                <button id="ac" onclick="screen.value=''">clear</button>
+            </div>
+
+            <div class="row">
+              
+               
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">%</button>
+                <button onclick="sqrt()">√</button>
+            </div>
+
+            <div class="row">
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">×</button>
+                <button class="btn">÷</button>
+            </div>
+
+            <div class="row">
+               
+                
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+               
+                <button class="btn">+</button>
+                <button class="btn">-</button>
+            </div>
+
+            <div class="row">
+                <button class="btn">.</button>
+                <button class="btn">0</button>
+                <button class="btn">+</button>
+                <button id="eval1" onclick="screen.value=eval(screen.value)">ENTER</button>
+                
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var screen = document.querySelector('#screen');
+    var btn = document.querySelectorAll('.btn');
+
+    /*============ For getting the value of btn, Here we use for loop ============*/
+    for (item of btn) {
+        item.addEventListener('click', (e) => {
+            btntext = e.target.innerText;
+
+            if (btntext == '×') {
+                btntext = '*';
+            }
+
+            if (btntext == '÷') {
+                btntext = '/';
+            }
+            screen.value += btntext;
+        });
+    }
+
+
+
+
+    function sqrt() {
+        screen.value = Math.sqrt(screen.value, 2);
+    }
+    function backspc() {
+        screen.value = screen.value.substr(0, screen.value.length - 1);
+    }
+</script>
+
+</html>
